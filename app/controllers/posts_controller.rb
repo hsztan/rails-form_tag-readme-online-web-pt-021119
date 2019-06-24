@@ -1,3 +1,5 @@
+require 'pry'
+
 class PostsController < ApplicationController
   def index
     @posts = Post.all
@@ -7,7 +9,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    puts params
+    Post.create(title: params[:post][:title], description: params[:post][:description])
+    redirect_to posts_path
   end
 
 end
